@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const HF_API_URL = "https://api-inference.huggingface.co/models/meta-llama/Llama-3.2-3B-Instruct";
+const HF_API_URL = "https://api-inference.huggingface.co/models/gpt2";
 const HF_API_KEY = process.env.HUGGINGFACE_API_KEY;
 
 app.get("/", (req, res) => {
@@ -31,7 +31,7 @@ app.post("/api/query", async (req, res) => {
       body: JSON.stringify({
         inputs: fullPrompt,
         parameters: {
-          max_new_tokens: 500,
+          max_new_tokens: 200,
           temperature: 0.7,
           top_p: 0.95,
           return_full_text: false
@@ -40,7 +40,7 @@ app.post("/api/query", async (req, res) => {
     });
 
     const responseText = await response.text();
-    console.log("Respuesta de Hugging Face:", responseText);
+    console.log("Respuesta de Hugging Face:", responseText.substring(0, 500));
 
     if (!response.ok) {
       console.error("Error HTTP:", response.status, responseText);
