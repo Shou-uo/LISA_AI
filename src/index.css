@@ -1,0 +1,50 @@
+/* src/index.css */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  /* 💡 REGLA CRUCIAL: El fondo debe ser negro */
+  background-color: #000; 
+
+  /* Color del texto blanco/claro (Necesario para el Header) */
+  color: #f0f0f0; 
+
+  /* Configuraciones de Layout: Mantener para compatibilidad */
+  display: flex;
+  flex-direction: column;
+}
+
+/* ... (El resto de tus estilos de #root, .chat-container, etc., quedan abajo) ... */
+/* ----------------------------------------------------- */
+.chat-container {
+    /* PROPIEDADES CLAVE PARA FLOTAR EN LA ESQUINA */
+    position: fixed; 
+    bottom: 20px;    
+    right: 20px;     
+    width: 350px;    
+    height: 450px;   
+    z-index: 1000; /* Asegura que esté por encima del Header */
+
+    /* OTROS ESTILOS DE DISEÑO */
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(25, 25, 25, 0.95); /* Fondo casi opaco */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 204, 255, 0.5); /* Sombra de neón */
+}
+
+.chat-history {
+    flex-grow: 1; 
+    padding: 20px;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+
+.chat-input {
+    padding: 15px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
